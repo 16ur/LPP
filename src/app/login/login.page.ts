@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
     async toastValid() {
       const toast = await this.toastController.create({
         message: 'Connexion réussie, bienvenue ' + this.login + ' ! ',
-        duration: 2000,
+        duration: 1000,
         position:"top",
         positionAnchor: "header",
         color: 'success'

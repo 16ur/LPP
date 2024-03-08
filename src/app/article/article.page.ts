@@ -12,7 +12,22 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ArticlePage implements OnInit {
 
-  constructor() { }
+  public myResponse:any = [];
+
+  constructor() {
+    fetch(`http://www.sebastien-thon.fr/prince/index.php?login=classe1&mdp=mdp1`).then(async (response) => {
+      if (response.ok) {
+        const data = await response.json();
+        this.myResponse = data;
+        console.log(this.myResponse);
+      }
+      
+   })
+   .catch(e => {
+    console.log(e);
+  });
+  }
+
 
   ngOnInit() {
   }
