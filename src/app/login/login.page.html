@@ -1,0 +1,25 @@
+<ion-header id="header">
+  <ion-toolbar>
+    <ion-title> Connexion </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Identifiant</ion-label>
+    <ion-input type="text" [(ngModel)]="login"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Mot de passe</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-label>Rester connecté</ion-label>
+  </ion-item> -->
+
+  <ion-button id="headerAnchor" expand="block" (click)="logFunc()"
+    >Connexion</ion-button
+  >
+</ion-content>
