@@ -48,24 +48,17 @@ export class LoginPage implements OnInit {
   
 
   async logFunc() {
-    if (this.login == 'classe1' && this.password == 'mdp1') {
-      this.navCtrl.navigateForward('article');
-      this.toastValid();
+    const apiClasse1 = `http://www.sebastien-thon.fr/prince/index.php?connexion&login=${this.login}&mdp=${this.password}`;
+    const response = await fetch(apiClasse1);
+    const data = await response.json();
+    console.log(data);
 
-    }
-    else if (this.login == 'classe2' && this.password == 'mdp2') {
-      this.navCtrl.navigateForward('article');
+    if (data.resultat === "OK") {
       this.toastValid();
-    }
-
-    else if (this.login == 'classe3' && this.password == 'mdp3') {
-      this.navCtrl.navigateForward('article');
-      this.toastValid();
-    }
-    else {
+      this.navCtrl.navigateForward('/article');
+    } else {
       this.toastInvalid();
     }
-  
   }
   ngOnInit() {
   }
