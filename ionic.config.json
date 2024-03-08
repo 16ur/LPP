@@ -1,0 +1,7 @@
+{
+  "name": "LPP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
