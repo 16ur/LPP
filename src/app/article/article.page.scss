@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+#legendeCard{
+    font-style: italic;
+}
+
+#titleCard{
+    font-size: 1.5em;
+    font-weight: bold;
+
+}
+
+#textCard{
+    color: whitesmoke;
+    font-size: 1.1em;
+}
+
+#ionCard{
+    background-color: #243633;
+    color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px #1e2726;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#imgCard img{
+
+}
