@@ -13,4 +13,30 @@
       <ion-title size="large">Galeries d’images</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let galerie of myResponse.galeries">
+      <ion-card id="ionCard">
+        <ion-card-header>
+          <ion-card-title id="titleCard">{{galerie.titre}}</ion-card-title>
+          <ion-card-subtitle>{{galerie.date}}</ion-card-subtitle>
+          <ion-card-subtitle
+            >Classe(s) concernée(s) : {{galerie.classe}}</ion-card-subtitle
+          >
+        </ion-card-header>
+
+        <ion-card-content id="textCard"> {{galerie.texte}} </ion-card-content>
+
+        <ion-row>
+          <ion-col size="10" *ngFor="let photo of galerie.photos">
+            <ion-img
+              id="imgCard"
+              [src]="'http://www.sebastien-thon.fr/prince/images/' + photo.image"
+            ></ion-img>
+            <ion-card-subtitle>{{photo.legende}}</ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,25 +1,40 @@
-<ion-header id="header">
-  <ion-toolbar>
-    <ion-title> Connexion </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content id="allLogin" scrollEvents="false">
+  <ion-header id="header" class="ion-no-border">
+    <ion-toolbar>
+      <ion-title id="connexionTitle"> Connexion </ion-title>
+      <img src="../../assets/icon/lpp.png" id="LPPImg" alt="" />
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-  <ion-item>
-    <ion-label position="floating">Identifiant</ion-label>
-    <ion-input type="text" [(ngModel)]="login"></ion-input>
-  </ion-item>
+  <ion-content>
+    <div class="login-form">
+      <ion-item>
+        <ion-label position="floating">Identifiant</ion-label>
+        <ion-input type="text" [(ngModel)]="login"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Mot de passe</ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input
+          type="password"
+          shape="round"
+          [(ngModel)]="password"
+        ></ion-input>
+      </ion-item>
 
-  <!-- <ion-item>
-    <ion-label>Rester connecté</ion-label>
-  </ion-item> -->
+      <ion-button
+        id="headerAnchor"
+        shape="round"
+        expand="block"
+        (click)="logFunc()"
+      >
+        Connexion
+      </ion-button>
 
-  <ion-button id="headerAnchor" expand="block" (click)="logFunc()"
-    >Connexion</ion-button
-  >
+      <ion-item class="checkbox-item">
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>Resté connecté</ion-label>
+      </ion-item>
+    </div>
+  </ion-content>
 </ion-content>

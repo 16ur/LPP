@@ -13,4 +13,20 @@
       <ion-title size="large">Dates Importantes</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let dateImp of myResponse.dates">
+      <ion-card id="ionCard">
+        <ion-card-header>
+          <ion-card-title id="titleCard">{{dateImp.titre}}</ion-card-title>
+          <ion-card-subtitle>{{dateImp.date}}</ion-card-subtitle>
+          <ion-card-subtitle
+            >Classe(s) concernée(s) : {{dateImp.classe}}</ion-card-subtitle
+          >
+        </ion-card-header>
+
+        <ion-card-content id="textCard"> {{dateImp.texte}} </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>
