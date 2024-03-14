@@ -3,13 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AuthService } from '../AuthService.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
+
+
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.page.html',
   styleUrls: ['./article.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ArticlePage implements OnInit {
 
@@ -40,6 +46,10 @@ export class ArticlePage implements OnInit {
       .catch(e => {
         console.log(e);
       });
+  }
+
+  swiperSlideChanged(e:any) {
+    console.log('slide changed', e);
   }
 
 }
