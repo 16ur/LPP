@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -18,8 +18,11 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ArticlePage implements OnInit {
+ 
 
   public myResponse:any = [];
+  public searchTerm: string = '';
+  public filteredArticles: any = [];
 
   constructor(public authService: AuthService) {
   }
@@ -51,5 +54,8 @@ export class ArticlePage implements OnInit {
   swiperSlideChanged(e:any) {
     console.log('slide changed', e);
   }
+
+  
+
 
 }

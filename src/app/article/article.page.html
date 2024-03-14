@@ -15,6 +15,8 @@
   </ion-header>
 
   <ion-list>
+    <ion-searchbar></ion-searchbar>
+
     <ion-item *ngFor="let article of myResponse.articles">
       <ion-card id="ionCard">
         <swiper-container
@@ -38,6 +40,8 @@
           </swiper-slide>
         </swiper-container>
 
+        <!-- **TODO Permettre d’afficher les légendes selon les images -->
+
         <ion-card-subtitle
           id="legendeCard"
           *ngIf="article.photos && article.photos.length > 0"
@@ -60,11 +64,3 @@
     </ion-item>
   </ion-list>
 </ion-content>
-
-<!-- 
-  <ion-img
-          id="imgCard"
-          ngIf="article.photos && article.photos.length > 0"
-          [src]="'http://www.sebastien-thon.fr/prince/images/' + article.photos[0].image"
-        ></ion-img>
- -->

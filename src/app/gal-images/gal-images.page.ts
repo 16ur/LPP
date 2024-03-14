@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AuthService } from '../AuthService.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 @Component({
   selector: 'app-gal-images',
   templateUrl: './gal-images.page.html',
   styleUrls: ['./gal-images.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class GalImagesPage implements OnInit {
   public myResponse:any = [];
@@ -41,5 +45,8 @@ export class GalImagesPage implements OnInit {
       });
   }
 
+  swiperSlideChanged(e:any) {
+    console.log('slide changed', e);
+  }
 
 }
