@@ -17,17 +17,34 @@
   <ion-list>
     <ion-item *ngFor="let article of myResponse.articles">
       <ion-card id="ionCard">
-        <ion-img
-          id="imgCard"
-          *ngIf="article.photos && article.photos.length > 0"
-          [src]="'http://www.sebastien-thon.fr/prince/images/' + article.photos[0].image"
-        ></ion-img>
+        <swiper-container
+          [slidesPerView]="1"
+          [spaceBetween]="50"
+          (slideChange)="swiperSlideChanged($event)"
+          [loop]="true"
+          [pagination]="true"
+        >
+          <swiper-slide *ngIf="article.photos && article.photos.length > 0">
+            <img
+              id="imgCard"
+              [src]="'http://www.sebastien-thon.fr/prince/images/' + article.photos[0].image"
+            />
+          </swiper-slide>
+          <swiper-slide *ngIf="article.photos && article.photos.length > 1">
+            <img
+              id="imgCard"
+              [src]="'http://www.sebastien-thon.fr/prince/images/' + article.photos[1].image"
+            />
+          </swiper-slide>
+        </swiper-container>
+
         <ion-card-subtitle
           id="legendeCard"
           *ngIf="article.photos && article.photos.length > 0"
         >
           {{article.photos[0].legende}}
         </ion-card-subtitle>
+
         <ion-card-header>
           <ion-card-title id="titleCard">{{article.titre}}</ion-card-title>
           <ion-card-subtitle
@@ -43,3 +60,11 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+<!-- 
+  <ion-img
+          id="imgCard"
+          ngIf="article.photos && article.photos.length > 0"
+          [src]="'http://www.sebastien-thon.fr/prince/images/' + article.photos[0].image"
+        ></ion-img>
+ -->
