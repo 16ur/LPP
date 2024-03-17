@@ -65,9 +65,13 @@
         </ion-card-header>
 
         <ion-card-content id="textCard"> {{article.texte}} </ion-card-content>
-        <ion-button id="favoriteArticle" (click)="toggleFavoris(article)">
+        <button
+          id="favoriteArticle"
+          (click)="toggleFavoris(article)"
+          class="ion-color ion-color-primary"
+        >
           Ajouter aux favoris
-        </ion-button>
+        </button>
       </ion-card>
     </ion-item>
   </ion-list>
