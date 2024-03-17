@@ -8,17 +8,18 @@ import { AuthService } from '../AuthService.page';
   templateUrl: './date-imp.page.html',
   styleUrls: ['./date-imp.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule],
 })
 export class DateImpPage implements OnInit {
+  public myResponse: any = [];
 
-  public myResponse:any = [];
-
-  constructor(public authService: AuthService) {
-  }
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {
+    this.loadData();
+  }
 
+  async loadData() {
     const storedLogin = localStorage.getItem('login');
     const storedPassword = localStorage.getItem('password');
 
@@ -27,18 +28,23 @@ export class DateImpPage implements OnInit {
       this.authService.password = storedPassword;
     }
 
-    fetch(`http://www.sebastien-thon.fr/prince/index.php?login=${this.authService.login}&mdp=${this.authService.password}`)
-      .then(async (response) => {
+    try {
+      const response = await fetch(
+        `http://www.sebastien-thon.fr/prince/index.php?login=${this.authService.login}&mdp=${this.authService.password}`
+      );
 
-        if (response.ok) {
-          const data = await response.json();
-          this.myResponse = data;
-          console.log(this.myResponse);
-        }
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      if (response.ok) {
+        const data = await response.json();
+        this.myResponse = data;
+        console.log(this.myResponse);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }
 
+  async runRefresh(event: any) {
+    await this.loadData();
+    (event.target as HTMLIonRefresherElement).complete();
+  }
 }

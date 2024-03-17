@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="runRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Articles</ion-title>
@@ -15,8 +18,11 @@
   </ion-header>
 
   <ion-list>
-    <ion-searchbar></ion-searchbar>
-
+    <ion-searchbar
+      (ionInput)="handleInput($event)"
+      placeholder="Rechercher un article"
+      debounce="500"
+    ></ion-searchbar>
     <ion-item *ngFor="let article of myResponse.articles">
       <ion-card id="ionCard">
         <swiper-container

@@ -5,24 +5,24 @@ import { IonicModule } from '@ionic/angular';
 import { AuthService } from '../AuthService.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-
 @Component({
   selector: 'app-gal-images',
   templateUrl: './gal-images.page.html',
   styleUrls: ['./gal-images.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GalImagesPage implements OnInit {
-  public myResponse:any = [];
+  public myResponse: any = [];
 
-  constructor(public authService: AuthService) {
-  }
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {
+    this.loadData(); // Charger les données initiales lors du chargement de la page
+  }
 
+  async loadData() {
     const storedLogin = localStorage.getItem('login');
     const storedPassword = localStorage.getItem('password');
 
@@ -31,22 +31,27 @@ export class GalImagesPage implements OnInit {
       this.authService.password = storedPassword;
     }
 
-    fetch(`http://www.sebastien-thon.fr/prince/index.php?login=${this.authService.login}&mdp=${this.authService.password}`)
-      .then(async (response) => {
+    try {
+      const response = await fetch(
+        `http://www.sebastien-thon.fr/prince/index.php?login=${this.authService.login}&mdp=${this.authService.password}`
+      );
 
-        if (response.ok) {
-          const data = await response.json();
-          this.myResponse = data;
-          console.log(this.myResponse);
-        }
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      if (response.ok) {
+        const data = await response.json();
+        this.myResponse = data;
+        console.log(this.myResponse);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }
 
-  swiperSlideChanged(e:any) {
+  async runRefresh(event: any) {
+    await this.loadData();
+    (event.target as HTMLIonRefresherElement).complete();
+  }
+
+  swiperSlideChanged(e: any) {
     console.log('slide changed', e);
   }
-
 }
