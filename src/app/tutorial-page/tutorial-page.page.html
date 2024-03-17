@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Comment utiliser LPP ?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tutoriel</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <swiper-container [slidesPerView]="1" [spaceBetween]="50" [pagination]="true">
+    <swiper-slide>
+      <img id="imgCard" src="../../assets/tutorial/lppwelcome.png" />
+      <ion-card-subtitle id="ionSub">
+        Glisser de droite à gauche pour voir les différentes étapes du tutoriel.
+      </ion-card-subtitle>
+    </swiper-slide>
+    <swiper-slide>
+      <img id="imgCard" src="../../assets/tutorial/articlePage.png" />
+      <ion-card-subtitle id="ionSub">
+        Une fois connecté, vous atterrissez sur la page d'accueil qui est celle
+        des articles. Vous pouvez défiler les photos des articles en glissant
+        votre doigt de droite à gauche ou encore ajouter des articles en
+        favoris.
+      </ion-card-subtitle>
+    </swiper-slide>
+    <swiper-slide>
+      <img id="imgCard" src="../../assets/tutorial/menuShow.png" />
+      <ion-card-subtitle id="ionSub">
+        L’application propose un menu latéral qui vous permet d’accéder à
+        différentes fonctionnalités.
+      </ion-card-subtitle>
+    </swiper-slide>
+    <swiper-slide>
+      <img id="imgCard" src="../../assets/tutorial/articleFav.png" />
+      <ion-card-subtitle id="ionSub">
+        Vous pouvez consulter les articles que vous avez ajoutés en favoris.
+      </ion-card-subtitle>
+    </swiper-slide>
+    <swiper-slide>
+      <img id="imgCard" src="../../assets/tutorial/galerieImage.png" />
+      <ion-card-subtitle id="ionSub">
+        Ou encore accéder à la galerie d’images.
+      </ion-card-subtitle>
+    </swiper-slide>
+    <swiper-slide>
+      <img id="imgCard" src="../../assets/tutorial/diveInto.png" />
+      <button id="diveButton" (click)="onDiveInto()">
+        Plonger dans l’application
+      </button>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>

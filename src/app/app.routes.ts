@@ -34,5 +34,9 @@ export const routes: Routes = [
     path: 'favorite-post',
     loadComponent: () => import('./favorite-post/favorite-post.page').then( m => m.FavoritePostPage)
   },
+  {
+    path: 'tutorial-page',
+    loadComponent: () => import('./tutorial-page/tutorial-page.page').then( m => m.TutorialPagePage)
+  },
 
 ];

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NavController } from '@ionic/angular/standalone';
 import {
   IonApp,
   IonSplitPane,
@@ -68,7 +69,7 @@ register();
     IonRouterOutlet,
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public appPages = [
     { title: 'Articles', url: '/article', icon: 'library' },
     {
@@ -89,7 +90,7 @@ export class AppComponent {
       icon: 'log-out',
     },
   ];
-  constructor() {
+  constructor(private navCtrl: NavController) {
     addIcons({
       mailOutline,
       mailSharp,
@@ -116,5 +117,12 @@ export class AppComponent {
       mailOpenOutline,
       mailOpenSharp,
     });
+  }
+
+  ngOnInit() {
+    const seenTutorial = localStorage.getItem('seenTutorial');
+    if (seenTutorial) {
+      this.navCtrl.navigateRoot('/article');
+    }
   }
 }
