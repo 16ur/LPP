@@ -53,6 +53,7 @@ export class LoginPage implements OnInit {
       this.authService.login = this.login;
       this.authService.password = this.password;
       console.log(data.resultat);
+      console.log(this.rememberMe);
 
       if (this.rememberMe) {
         localStorage.setItem('login', this.login);
@@ -71,10 +72,9 @@ export class LoginPage implements OnInit {
     const storedLogin = localStorage.getItem('login');
     const storedPassword = localStorage.getItem('password');
 
-    if (storedLogin && storedPassword) {
+    if (storedLogin && storedPassword && this.rememberMe) {
       this.login = storedLogin;
       this.password = storedPassword;
-      this.rememberMe = true;
     }
   }
 }
