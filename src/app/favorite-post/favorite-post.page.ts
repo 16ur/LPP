@@ -18,13 +18,30 @@ export class FavoritePostPage implements OnInit {
 
   constructor() {}
 
+  ngOnInit() {
+    this.loadFavorites();
+  }
+
   swiperSlideChanged(e: any) {
     console.log('slide changed', e);
   }
-  ngOnInit() {
+
+  loadFavorites() {
     const storedFavoris = localStorage.getItem('favoris');
     if (storedFavoris) {
       this.favoris = JSON.parse(storedFavoris);
     }
+  }
+
+  removeFavoris(article: Article) {
+    this.favoris = this.favoris.filter((a) => a !== article);
+    localStorage.setItem('favoris', JSON.stringify(this.favoris));
+    console.log('favoris', this.favoris);
+  }
+
+  runRefresh(event: any) {
+    this.loadFavorites();
+    (event.target as HTMLIonRefresherElement).complete();
+    console.log('favoris', this.favoris);
   }
 }

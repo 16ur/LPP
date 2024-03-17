@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="runRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <ion-item *ngFor="let article of favoris">
       <ion-card id="ionCard">
@@ -46,6 +49,14 @@
           >
         </ion-card-header>
         <ion-card-content id="textCard"> {{article.texte}} </ion-card-content>
+
+        <ion-button
+          (click)="removeFavoris(article)"
+          expand="block"
+          fill="outline"
+          color="danger"
+          >Supprimer des favoris</ion-button
+        >
       </ion-card>
     </ion-item>
   </ion-list>
