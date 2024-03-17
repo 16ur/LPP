@@ -30,5 +30,9 @@ export const routes: Routes = [
   {
     path: 'info-contact',
     loadComponent: () => import('./info-contact/info-contact.page').then( m => m.InfoContactPage)
+  },  {
+    path: 'favorite-post',
+    loadComponent: () => import('./favorite-post/favorite-post.page').then( m => m.FavoritePostPage)
   },
+
 ];

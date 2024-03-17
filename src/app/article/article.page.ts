@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule, IonRefresher } from '@ionic/angular';
 import { AuthService } from '../AuthService.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Article } from './article.model';
 
 @Component({
   selector: 'app-article',
@@ -16,6 +17,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 export class ArticlePage implements OnInit {
   public myResponse: any = [];
   public filteredArticles: any = [];
+  public favoris: Article[] = [];
 
   constructor(public authService: AuthService) {}
 
@@ -64,5 +66,21 @@ export class ArticlePage implements OnInit {
         article.contenu.toLowerCase().includes(query)
       );
     });
+  }
+
+  toggleFavoris(article: Article) {
+    article.favoris = !article.favoris;
+    if (article.favoris) {
+      this.favoris.push(article);
+    } else {
+      this.favoris = this.favoris.filter((a) => a.id !== article.id);
+    }
+
+    localStorage.setItem('favoris', JSON.stringify(this.favoris));
+    console.log('favoris', this.favoris);
+  }
+
+  isFavoris(article: Article) {
+    return this.favoris.some((a) => a.id === article.id);
   }
 }

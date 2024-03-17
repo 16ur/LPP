@@ -34,7 +34,6 @@
           [slidesPerView]="1"
           [spaceBetween]="50"
           (slideChange)="swiperSlideChanged($event)"
-          [loop]="true"
           [pagination]="true"
         >
           <swiper-slide *ngFor="let photo of galerie.photos">

@@ -71,6 +71,11 @@ register();
 export class AppComponent {
   public appPages = [
     { title: 'Articles', url: '/article', icon: 'library' },
+    {
+      title: 'Articles favoris',
+      url: '/favorite-post',
+      icon: 'heart',
+    },
     { title: "Galeries d'images", url: '/gal-images', icon: 'image' },
     { title: 'Dates Importantes', url: '/date-imp', icon: 'calendar' },
     {

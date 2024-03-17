@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Articles</ion-title>
+    <ion-title>Articles favoris</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -8,22 +8,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-refresher slot="fixed" (ionRefresh)="runRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Articles</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-list>
-    <ion-searchbar
-      (ionInput)="handleInput($event)"
-      placeholder="Rechercher un article"
-      debounce="500"
-    ></ion-searchbar>
-    <ion-item *ngFor="let article of myResponse.articles">
+    <ion-item *ngFor="let article of favoris">
       <ion-card id="ionCard">
         <swiper-container
           [slidesPerView]="1"
@@ -44,16 +30,12 @@
             />
           </swiper-slide>
         </swiper-container>
-
-        <!-- **TODO Permettre d’afficher les légendes selon les images -->
-
         <ion-card-subtitle
           id="legendeCard"
           *ngIf="article.photos && article.photos.length > 0"
         >
           {{article.photos[0].legende}}
         </ion-card-subtitle>
-
         <ion-card-header>
           <ion-card-title id="titleCard">{{article.titre}}</ion-card-title>
           <ion-card-subtitle
@@ -63,11 +45,7 @@
             >Classe(s) concernée(s) : {{article.classe}}</ion-card-subtitle
           >
         </ion-card-header>
-
         <ion-card-content id="textCard"> {{article.texte}} </ion-card-content>
-        <ion-button id="favoriteArticle" (click)="toggleFavoris(article)">
-          Ajouter aux favoris
-        </ion-button>
       </ion-card>
     </ion-item>
   </ion-list>
