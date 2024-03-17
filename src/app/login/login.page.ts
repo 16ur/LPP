@@ -4,19 +4,19 @@ import { ToastController } from '@ionic/angular';
 
 import { AuthService } from '../AuthService.page';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms'; // Ajout du module FormsModule
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule], // Ajout du module FormsModule
+  imports: [IonicModule, FormsModule], 
 })
 export class LoginPage implements OnInit {
   login: string = '';
   password: string = '';
-  rememberMe: boolean = false; // Ajoutez cette variable pour suivre l'état de la case à cocher "Rester connecté"
+  rememberMe: boolean = false; 
 
   constructor(
     private navCtrl: NavController,
@@ -52,6 +52,7 @@ export class LoginPage implements OnInit {
     if (data.resultat === 'OK') {
       this.authService.login = this.login;
       this.authService.password = this.password;
+      console.log(data.resultat);
 
       if (this.rememberMe) {
         localStorage.setItem('login', this.login);
@@ -60,8 +61,9 @@ export class LoginPage implements OnInit {
 
       this.navCtrl.navigateForward('/article');
       this.toastValid();
-    } else {
+    } else{
       this.toastInvalid();
+      console.log(data);
     }
   }
 
