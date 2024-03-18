@@ -42,6 +42,9 @@ import {
   calendarSharp,
   mailOpenOutline,
   mailOpenSharp,
+  accessibility,
+  accessibilityOutline,
+  accessibilitySharp,
 } from 'ionicons/icons';
 import { register } from 'swiper/element/bundle';
 
@@ -87,13 +90,12 @@ export class AppComponent implements OnInit {
     {
       title: 'Tutoriel',
       url: '/tutorial-page',
-      icon: 'warning',
-    },
-    {
-      title: 'Déconnexion',
-      url: '/login',
-      icon: 'log-out',
+      icon: 'accessibility',
     }
+  ];
+
+  public logoutPage = [
+    { title: 'Déconnexion', url: '/login', icon: 'log-out' }
   ];
   constructor(private navCtrl: NavController) {
     addIcons({
@@ -121,6 +123,9 @@ export class AppComponent implements OnInit {
       calendarSharp,
       mailOpenOutline,
       mailOpenSharp,
+      accessibility,
+      accessibilityOutline,
+      accessibilitySharp,
     });
   }
 

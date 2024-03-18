@@ -63,7 +63,7 @@ export class ArticlePage implements OnInit {
     const query = event.target.value.toLowerCase();
     if (Array.isArray(this.myResponse.articles)) {
       this.filteredArticles = this.myResponse.articles.filter((article: any) => {
-        return article.titre.toLowerCase().includes(query);
+        return article.titre.toLowerCase().includes(query) || article.texte.toLowerCase().includes(query);
       });
     } else {
       console.error('myResponse.articles is not an array');

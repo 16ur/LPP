@@ -26,6 +26,16 @@
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-list>
+            <ion-list-header>Paramètres</ion-list-header>
+            <ion-menu-toggle *ngFor="let page of logoutPage">
+              <ion-item [routerLink]="page.url" lines="none">
+                <ion-icon slot="start" name="log-out-sharp"></ion-icon>
+                <ion-label>{{ page.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
         </ion-list>
       </ion-content>
     </ion-menu>
