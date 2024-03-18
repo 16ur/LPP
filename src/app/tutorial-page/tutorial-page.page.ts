@@ -17,7 +17,6 @@ export class TutorialPagePage implements OnInit {
   constructor(private router: Router) {}
 
   onDiveInto() {
-    localStorage.setItem('seenTutorial', 'true');
     this.router.navigateByUrl('/article');
   }
 

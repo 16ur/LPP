@@ -43,6 +43,7 @@ export class ArticlePage implements OnInit {
         const data = await response.json();
         this.myResponse = data;
         console.log(this.myResponse);
+        this.handleInput({ target: { value: '' } });
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -59,14 +60,17 @@ export class ArticlePage implements OnInit {
   }
 
   handleInput(event: any) {
-    const query = event.target.value.toLowerCase().trim();
-    this.filteredArticles = this.myResponse.filter((article: any) => {
-      return (
-        article.titre.toLowerCase().includes(query) ||
-        article.contenu.toLowerCase().includes(query)
-      );
-    });
+    const query = event.target.value.toLowerCase();
+    if (Array.isArray(this.myResponse.articles)) {
+      this.filteredArticles = this.myResponse.articles.filter((article: any) => {
+        return article.titre.toLowerCase().includes(query);
+      });
+    } else {
+      console.error('myResponse.articles is not an array');
+    }
   }
+  
+  
 
   toggleFavoris(article: Article) {
     article.favoris = !article.favoris;

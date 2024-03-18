@@ -23,7 +23,7 @@
       placeholder="Rechercher un article"
       debounce="500"
     ></ion-searchbar>
-    <ion-item *ngFor="let article of myResponse.articles">
+    <ion-item *ngFor="let article of filteredArticles">
       <ion-card id="ionCard">
         <swiper-container
           [slidesPerView]="1"

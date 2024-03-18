@@ -85,10 +85,15 @@ export class AppComponent implements OnInit {
       icon: 'mail-open',
     },
     {
+      title: 'Tutoriel',
+      url: '/tutorial-page',
+      icon: 'warning',
+    },
+    {
       title: 'Déconnexion',
       url: '/login',
       icon: 'log-out',
-    },
+    }
   ];
   constructor(private navCtrl: NavController) {
     addIcons({
@@ -121,8 +126,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const seenTutorial = localStorage.getItem('seenTutorial');
-    if (seenTutorial) {
-      this.navCtrl.navigateRoot('/article');
+    if (!seenTutorial) {
+      this.navCtrl.navigateRoot('/tutorial-page');
     }
   }
 }
