@@ -1,6 +1,6 @@
 # Le Petit Prince
 ## Le Petit Prince (où LPP), c'est quoi ?
-### LPP est un projet réalisé en Ionic qui a était fait dans le cadre de ma deuxième année de BUT Informatique. Cette application permet entre autre, de consulter des informations sur la classe de nos enfants :D
+LPP est un projet réalisé en Ionic qui a était fait dans le cadre de ma deuxième année de BUT Informatique. Cette application permet entre autre, de consulter des informations sur la classe de nos enfants :D
 
 
 ## Prérequis
